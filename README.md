@@ -4,6 +4,8 @@
 
 * java 11
 
+*** building on your own? 
+
 you need to build and install branch `tim/java-unstructured-experiment` of [www.github.com/datarobot-user-models](DRUM). 
 
 Before packaging this with maven, install `predictors.jar` located in the lib folder with 
@@ -12,13 +14,9 @@ Before packaging this with maven, install `predictors.jar` located in the lib fo
 
 Package this up via `mvn package`, and move `target/custom-model-0.1.0.jar` to `model` folder (already there if you don't want to package this).  
 
-Next, set some environment variables for DRUM to find the model. 
+*** running with docker
 
-`export DRUM_JAVA_CUSTOM_CLASS_PATH=/path/to/model/custom-model-0.1.0.jar`
-
-`export DRUM_JAVA_CUSTOM_PREDICTOR_CLASS=custom.CustomModel`
-
-`drum server --code-dir $DRUM_JAVA_CUSTOM_CLASS_PATH  --target-type unstructured --address localhost:12332 --verbose --logging-level info`
+`drum server --code-dir $DRUM_JAVA_CUSTOM_CLASS_PATH  --target-type unstructured --address localhost:12332 --verbose --logging-level info --docker ./env`
 
 run an example.  It currently doesn't matter what you sent to the model, it is only returning one prediction as json
 
@@ -34,4 +32,4 @@ i can put whatever i want here
 
 will return 
 
-`{"postive class prediction":0.5,"negative class prediction":0.5}`
+`{"message":"scoring in an unstrcutrued fashion"}`
