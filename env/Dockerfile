@@ -19,7 +19,11 @@ RUN apt-get update && apt-get install git make -y && cd /opt && \
 # Copy the drop-in environment code into the correct directory
 # Code from the custom model tarball can overwrite the code here
 ENV HOME=/opt CODE_DIR=/opt/code ADDRESS=0.0.0.0:8080
+
 ENV DRUM_JAVA_CUSTOM_CLASS_PATH=/opt/model/custom-model-0.1.0.jar
+# Uncomment if you are taking it into datarobot
+#ENV DRUM_JAVA_CUSTOM_CLASS_PATH=/opt/code/custom-model-0.1.0.jar
+
 ENV DRUM_JAVA_CUSTOM_PREDICTOR_CLASS=custom.CustomModel
 WORKDIR ${CODE_DIR}
 COPY ./ ${CODE_DIR}
