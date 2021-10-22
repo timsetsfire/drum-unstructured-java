@@ -14,14 +14,15 @@ Package this up via `mvn package`, and move `target/custom-model-0.1.0.jar` to `
 
 Next, set some environment variables for DRUM to find the model. 
 
-export DRUM_JAVA_CUSTOM_CLASS_PATH=/path/to/model/custom-model-0.1.0.jar
+`export DRUM_JAVA_CUSTOM_CLASS_PATH=/path/to/model/custom-model-0.1.0.jar`
 
-export DRUM_JAVA_CUSTOM_PREDICTOR_CLASS=custom.CustomModel
+`export DRUM_JAVA_CUSTOM_PREDICTOR_CLASS=custom.CustomModel`
 
-drum server --code-dir $DRUM_JAVA_CUSTOM_CLASS_PATH  --target-type unstructured --address localhost:12332 --verbose --logging-level info
+`drum server --code-dir $DRUM_JAVA_CUSTOM_CLASS_PATH  --target-type unstructured --address localhost:12332 --verbose --logging-level info`
 
 run an example.  It currently doesn't matter what you sent to the model, it is only returning one prediction as json
 
+```
 curl --location --request POST 'localhost:12332/predictUnstructured' \
 --header 'Content-Type: text/plain' \
 --data-raw 'email_content: "hi gautam"
@@ -29,6 +30,7 @@ i can put whatever i want here
 {x: 1, y: 3}
 123,123,123
 '
+```
 
 will return 
 
