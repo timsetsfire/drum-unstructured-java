@@ -4,7 +4,7 @@
 
 * java 11
 
-*** building on your own? 
+### building on your own? 
 
 Before packaging this with maven, install `predictors.jar` located in the lib folder with 
 
