@@ -36,9 +36,8 @@ public class CustomModel extends BasePredictor {
     public String predict_unstructured(byte[] inputBytes) throws JsonProcessingException { 
 
         // currently only returned one prediction no matter what is sent
-        Map<String, Double> predictions = new HashMap();
-        predictions.put("negative class prediction", 0.5);
-        predictions.put("postive class prediction", 0.5);
+        Map<String, String> predictions = new HashMap();
+        predictions.put("message", "scoring in an unstrcutrued fashion");
         String json = null;
 
         try {
