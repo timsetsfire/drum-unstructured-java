@@ -6,17 +6,23 @@
 
 *** building on your own? 
 
-you need to build and install branch `tim/java-unstructured-experiment` of [www.github.com/datarobot-user-models](DRUM). 
-
 Before packaging this with maven, install `predictors.jar` located in the lib folder with 
 
 `mvn install:install-file -Dfile=lib/predictors.jar -DartifactId=drum -DgroupId=com.datarobot -Dversion=1.0.0 -Dpackaging=jar`
 
 Package this up via `mvn package`, and move `target/custom-model-0.1.0.jar` to `model` folder (already there if you don't want to package this).  
 
-*** running with docker
+### running without docker
+
+you need to build and install branch `tim/java-unstructured-experiment` of [www.github.com/datarobot-user-models](DRUM). 
+
+`drum server --code-dir $DRUM_JAVA_CUSTOM_CLASS_PATH  --target-type unstructured --address localhost:12332 --verbose --logging-level info`
+
+### running with docker
 
 `drum server --code-dir $DRUM_JAVA_CUSTOM_CLASS_PATH  --target-type unstructured --address localhost:12332 --verbose --logging-level info --docker ./env`
+
+### Run the example
 
 run an example.  It currently doesn't matter what you sent to the model, it is only returning one prediction as json
 
